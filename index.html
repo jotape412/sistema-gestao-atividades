@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Atividades</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <h1>Gestão de Atividades</h1>
+      <p>Organize, acompanhe e conclua suas tarefas.</p>
+    </div>
+    <button id="btnNova" class="btn btn-principal">+ Nova atividade</button>
+  </header>
+
+  <main class="container">
+    <section class="resumo">
+      <div class="card"><span>Total</span><strong id="total">0</strong></div>
+      <div class="card"><span>Pendentes</span><strong id="pendentes">0</strong></div>
+      <div class="card"><span>Em andamento</span><strong id="andamento">0</strong></div>
+      <div class="card"><span>Concluídas</span><strong id="concluidas">0</strong></div>
+    </section>
+
+    <section class="progresso-card">
+      <div class="progresso-info">
+        <span>Progresso geral</span>
+        <strong id="percentual">0%</strong>
+      </div>
+      <div class="barra"><div id="barraProgresso"></div></div>
+    </section>
+
+    <section class="filtros">
+      <input id="busca" type="search" placeholder="Buscar atividade...">
+      <select id="filtroStatus">
+        <option value="todos">Todos os status</option>
+        <option value="Pendente">Pendente</option>
+        <option value="Em andamento">Em andamento</option>
+        <option value="Concluído">Concluído</option>
+      </select>
+      <select id="filtroPrioridade">
+        <option value="todas">Todas as prioridades</option>
+        <option value="Alta">Alta</option>
+        <option value="Média">Média</option>
+        <option value="Baixa">Baixa</option>
+      </select>
+    </section>
+
+    <section>
+      <div id="listaAtividades" class="lista"></div>
+      <p id="vazio" class="vazio">Nenhuma atividade encontrada.</p>
+    </section>
+  </main>
+
+  <div id="modal" class="modal escondido">
+    <div class="modal-conteudo">
+      <button id="btnFechar" class="fechar">&times;</button>
+      <h2 id="tituloModal">Nova atividade</h2>
+
+      <form id="formAtividade">
+        <input type="hidden" id="idAtividade">
+
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" maxlength="80" required>
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" rows="4" maxlength="300"></textarea>
+
+        <div class="dupla">
+          <div>
+            <label for="prioridade">Prioridade</label>
+            <select id="prioridade">
+              <option>Alta</option>
+              <option selected>Média</option>
+              <option>Baixa</option>
+            </select>
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select id="status">
+              <option selected>Pendente</option>
+              <option>Em andamento</option>
+              <option>Concluído</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="acoes">
+          <button type="button" id="btnCancelar" class="btn btn-secundario">Cancelar</button>
+          <button type="submit" class="btn btn-principal">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
